@@ -34,6 +34,8 @@
 #   3536DV100
 # ingenic
 #   x1830
+# nxp
+#   mx6ull
 # pc
 #   pc-chip
 # rock-chips
