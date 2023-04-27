@@ -23,7 +23,7 @@ top_dir := $(shell pwd)/../../..
 endif
 
 project                 := zlib
-project_version         := 1.2.12
+project_version         := 1.2.13
 project_download_url    := https://www.zlib.net/zlib-$(project_version).tar.gz
 
 include $(top_dir)/configs/common_var.mk
