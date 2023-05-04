@@ -25,5 +25,5 @@ host                := arm-linux
 CFLAGS              :=
 LDFLAGS             :=
 
-prefix_path         ?= /mnt/data/nfs/$(vender)/$(chip)
+prefix_path         ?= /mnt/nfs/$(vender)/$(chip)
 

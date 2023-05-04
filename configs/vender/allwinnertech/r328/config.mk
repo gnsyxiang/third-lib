@@ -29,5 +29,5 @@ LDFLAGS             :=
 STAGING_DIR         := $(toolchains_path)
 export STAGING_DIR
 
-prefix_path         ?= /mnt/data/nfs/$(vender)/$(chip)
+prefix_path         ?= /mnt/nfs/$(vender)/$(chip)
 
