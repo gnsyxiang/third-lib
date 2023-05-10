@@ -40,6 +40,7 @@
 #   pc-chip
 # rock-chips
 #   rk3308
+#   rk3568
 # unisound
 #   unione
 vender := pc
