@@ -32,7 +32,7 @@ all: depend_lib $(target_dir)-make
 
 include $(sub_target_path)/common_sub_target.mk
 
-depend_lib: check_libpcap
+depend_lib: check_libpcap check_libnl3
 
 $(target_dir)-config: $(target_dir)-gz-src
 ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
