@@ -60,6 +60,13 @@ ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
                 --cross-compile-prefix=$(cross_gcc)             \
                 --prefix=$(prefix_path)                         \
             ;;                                                  \
+        aarch64*)                                               \
+            cd $(build_path)/$(@:-config=) &&                   \
+                $(src_path)/$(@:-config=)/Configure             \
+                linux-generic32 shared no-async $(CONFIG_COM)   \
+                --cross-compile-prefix=$(cross_gcc)             \
+                --prefix=$(prefix_path)                         \
+            ;;                                                  \
     esac
 
 	cd $(build_path)/$(@:-config=) && \
