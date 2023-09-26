@@ -23,8 +23,8 @@ top_dir := $(shell pwd)/../../..
 endif
 
 project                 := libevent
-project_version         := 2.1.12-stable
-project_download_url    := https://download.fastgit.org/libevent/libevent/releases/download/release-$(project_version)/libevent-$(project_version).tar.gz
+project_version         := 2.1.12
+project_download_url    := https://codeload.github.com/libevent/libevent/tar.gz/refs/tags/release-$(project_version)-stable
 
 include $(top_dir)/configs/common_var.mk
 
@@ -34,9 +34,12 @@ include $(sub_target_path)/common_sub_target.mk
 
 depend_lib: check_openssl
 
-$(target_dir)-config: $(target_dir)-gz-src
+$(target_dir)-config: $(target_dir)-rename-gz-src
 ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
 	$(MKDIR) $(build_path)/$(@:-config=)
+
+	cd $(src_path)/$(@:-config=) && \
+        ./autogen.sh
 
 	cd $(build_path)/$(@:-config=) &&               \
         $(src_path)/$(@:-config=)/configure         \
