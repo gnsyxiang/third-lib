@@ -23,8 +23,8 @@ top_dir := $(shell pwd)/../../..
 endif
 
 project                 := zlib
-project_version         := 1.2.13
-project_download_url    := https://www.zlib.net/zlib-$(project_version).tar.gz
+project_version         := 1.3
+project_download_url    := https://codeload.github.com/madler/zlib/tar.gz/refs/tags/v$(project_version)
 
 include $(top_dir)/configs/common_var.mk
 
@@ -34,7 +34,7 @@ include $(sub_target_path)/common_sub_target.mk
 
 depend_lib:
 
-$(target_dir)-config: $(target_dir)-gz-src
+$(target_dir)-config: $(target_dir)-rename-gz-src
 ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
 	$(MKDIR) $(build_path)/$(@:-config=)
 
