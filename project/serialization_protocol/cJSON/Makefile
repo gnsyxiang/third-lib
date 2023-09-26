@@ -23,8 +23,8 @@ top_dir := $(shell pwd)/../../..
 endif
 
 project                 := cJSON
-project_version         := 1.7.14
-project_download_url    := https://archive.fastgit.org/DaveGamble/cJSON/archive/refs/tags/v$(project_version).tar.gz
+project_version         := 1.7.16
+project_download_url    := https://codeload.github.com/DaveGamble/cJSON/tar.gz/refs/tags/v$(project_version)
 
 include $(top_dir)/configs/common_var.mk
 
