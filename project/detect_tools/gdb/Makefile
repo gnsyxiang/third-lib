@@ -23,8 +23,8 @@ top_dir := $(shell pwd)/../../..
 endif
 
 project                 := gdb
-project_version         := 10.1
-project_download_url    := http://ftp.gnu.org/gnu/gdb/gdb-$(project_version).tar.gz
+project_version         := 13.2
+project_download_url    := https://ftp.gnu.org/gnu/gdb/gdb-$(project_version).tar.gz
 
 include $(top_dir)/configs/common_var.mk
 
@@ -32,7 +32,7 @@ all: depend_lib $(target_dir)-make
 
 include $(sub_target_path)/common_sub_target.mk
 
-depend_lib:
+depend_lib: check_gmp
 
 # --without-x                   取消x windows 支持
 # --disable-gdbtk               取消gdbtk,应该也是图形界面相关的
