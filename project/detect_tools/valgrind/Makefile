@@ -23,7 +23,7 @@ top_dir := $(shell pwd)/../../..
 endif
 
 project                 := valgrind
-project_version         := 3.17.0
+project_version         := 3.21.0
 project_download_url    := https://sourceware.org/pub/valgrind/valgrind-$(project_version).tar.bz2
 
 include $(top_dir)/configs/common_var.mk
