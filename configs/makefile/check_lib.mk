@@ -18,6 +18,14 @@
 #     last modified: 25/04 2021 13:38
 # ===============================================================
 
+check_gmp:
+_gmp_file := $(prefix_path)/include/gmp.h
+ifneq ($(_gmp_file), $(wildcard $(_gmp_file)))
+	$(ECHO) "\tuse \"make lib=gmp\" first to compile gmp."
+	$(ECHO) ''
+	exit 1
+endif
+
 # audio
 _libogg_file := $(prefix_path)/include/ogg/ogg.h
 check_libogg:
