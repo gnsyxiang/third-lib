@@ -23,8 +23,8 @@ top_dir := $(shell pwd)/../../..
 endif
 
 project                 := htop
-project_version         := 2.2.0
-project_download_url    := http://hisham.hm/htop/releases/$(project_version)/htop-$(project_version).tar.gz
+project_version         := 3.2.2
+project_download_url    := https://codeload.github.com/htop-dev/htop/tar.gz/refs/tags/$(project_version)
 
 include $(top_dir)/configs/common_var.mk
 
@@ -35,7 +35,7 @@ HTOP_NCURSES_CONFIG_SCRIPT := $(prefix_path)/bin/ncursesw6-config
 
 depend_lib: check_ncursesw
 
-$(target_dir)-config: $(target_dir)-gz-src
+$(target_dir)-config: $(target_dir)-rename-gz-src
 ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
 	$(MKDIR) $(build_path)/$(@:-config=)
 
@@ -55,12 +55,12 @@ ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
             --prefix=$(prefix_path)                     \
             --build=$(build)                            \
             --host=$(host)                              \
-            --target=$(host)                            \
             \
             --disable-unicode
 
             #HTOP_NCURSESW6_CONFIG_SCRIPT=$(HTOP_NCURSES_CONFIG_SCRIPT)
             # --disable-unicode
+            #--target=$(host)                            \
 
 	$(TOUCH) $(config_ok_mark_path)
 endif
