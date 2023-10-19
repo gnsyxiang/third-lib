@@ -23,7 +23,7 @@ top_dir := $(shell pwd)/../../..
 endif
 
 project                 := curl
-project_version         := 7.76.1
+project_version         := 8.4.0
 project_download_url    := https://curl.se/download/curl-$(project_version).tar.gz
 
 include $(top_dir)/configs/common_var.mk
