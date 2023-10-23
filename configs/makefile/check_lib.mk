@@ -18,8 +18,8 @@
 #     last modified: 25/04 2021 13:38
 # ===============================================================
 
-check_gmp:
 _gmp_file := $(prefix_path)/include/gmp.h
+check_gmp:
 ifneq ($(_gmp_file), $(wildcard $(_gmp_file)))
 	$(ECHO) "\tuse \"make lib=gmp\" first to compile gmp."
 	$(ECHO) ''
