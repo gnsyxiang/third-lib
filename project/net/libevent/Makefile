@@ -32,7 +32,7 @@ all: depend_lib $(target_dir)-make
 
 include $(sub_target_path)/common_sub_target.mk
 
-depend_lib: check_openssl
+depend_lib:
 
 $(target_dir)-config: $(target_dir)-rename-gz-src
 ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
@@ -53,7 +53,9 @@ ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
             --prefix=$(prefix_path)                 \
             --build=$(build)                        \
             --host=$(host)                          \
-            --target=$(host)
+            --target=$(host)                        \
+            \
+            --disable-openssl
 
 	$(TOUCH) $(config_ok_mark_path)
 endif
