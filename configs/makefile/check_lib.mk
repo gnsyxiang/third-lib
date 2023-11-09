@@ -18,6 +18,14 @@
 #     last modified: 25/04 2021 13:38
 # ===============================================================
 
+_nasm_file := $(prefix_path)/bin/nasm
+check_nasm:
+ifneq ($(_nasm_file), $(wildcard $(_nasm_file)))
+	$(ECHO) "\tuse \"make lib=nasm\" first to compile nasm."
+	$(ECHO) ''
+	exit 1
+endif
+
 _libyasm_file := $(prefix_path)/include/libyasm.h
 check_libyasm:
 ifneq ($(_libyasm_file), $(wildcard $(_libyasm_file)))
