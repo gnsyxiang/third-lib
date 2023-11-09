@@ -18,6 +18,14 @@
 #     last modified: 25/04 2021 13:38
 # ===============================================================
 
+_libyasm_file := $(prefix_path)/include/libyasm.h
+check_libyasm:
+ifneq ($(_libyasm_file), $(wildcard $(_libyasm_file)))
+	$(ECHO) "\tuse \"make lib=libyasm\" first to compile libyasm."
+	$(ECHO) ''
+	exit 1
+endif
+
 _gmp_file := $(prefix_path)/include/gmp.h
 check_gmp:
 ifneq ($(_gmp_file), $(wildcard $(_gmp_file)))
