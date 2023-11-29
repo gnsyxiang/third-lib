@@ -23,8 +23,8 @@ top_dir := $(shell pwd)/../../..
 endif
 
 project                 := protobuf-c
-project_version         := 1.4.0
-project_download_url    := https://archive.fastgit.org/protobuf-c/protobuf-c/archive/refs/tags/v$(project_version).tar.gz
+project_version         := 1.5.0
+project_download_url    := https://codeload.github.com/protobuf-c/protobuf-c/tar.gz/refs/tags/v$(project_version)
 
 include $(top_dir)/configs/common_var.mk
 
