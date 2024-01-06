@@ -45,6 +45,8 @@
 #   unione
 vender := pc
 chip := pc-chip
+# esp32
+# 	esp32
 
 include $(vender_path)/$(vender)/$(chip)/config.mk
 
