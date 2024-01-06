@@ -51,5 +51,13 @@ ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
 	$(TOUCH) $(config_ok_mark_path)
 endif
 
+# 使用esp32编译时，需要增加如下配置修改Makefile
+        # sed -i 's/all: shared static tests/all: static tests/g' Makefile && \
+        # sed -i 's/install: install-cjson install-utils/install: install-cjson-static/g' Makefile && \
+        # sed -i '/^install: /i install-cjson-static: \n	mkdir -p \$$(INSTALL_LIBRARY_PATH) \$$(INSTALL_INCLUDE_PATH)' Makefile && \
+        # sed -i '/^install: /i \\t\$$(INSTALL) \$$(CJSON_STATIC) \$$(INSTALL_LIBRARY_PATH)' Makefile && \
+        # sed -i '/^install: /i \\t\$$(INSTALL) cJSON.h \$$(INSTALL_INCLUDE_PATH)' Makefile && \
+        # sed -i '/^install: /i \\t\$$(INSTALL) cJSON_Utils.h \$$(INSTALL_INCLUDE_PATH)\n' Makefile && \
+
 .PHONY: all clean distclean list
 

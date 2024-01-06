@@ -21,7 +21,7 @@
 cross_gcc           := /opt/toolchains/esp32/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-
 host                := xtensa-esp32-elf
 
-cppflags_com        := -mlongcalls
+cppflags_com        := -mlongcalls -Wno-frame-address -fdiagnostics-color=always
 cflags_com          :=
 cxxflags_com        :=
 ldflags_com         :=
