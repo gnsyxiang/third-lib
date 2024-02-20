@@ -37,16 +37,17 @@
 # nxp
 #   mx6ull
 # pc
-#   pc-chip
+#   ubuntu
+#   window
 # rock-chips
 #   rk3308
 #   rk3568
 # unisound
 #   unione
-vender := pc
-chip := pc-chip
 # esp32
 # 	esp32
+vender := pc
+chip := ubuntu
 
 include $(vender_path)/$(vender)/$(chip)/config.mk
 
