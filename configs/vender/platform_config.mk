@@ -59,6 +59,9 @@ include $(vender_path)/$(vender)/$(chip)/config.mk
 build   := x86_64-linux-gnu
 target  := $(host)
 
+# debug_release   := -ggdb -g -O0 -fstack-protector-all
+debug_release   := -O2 -DNDEBUG
+
 AR              := $(cross_gcc)ar
 AS              := $(cross_gcc)as
 LD              := $(cross_gcc)ld
@@ -75,10 +78,12 @@ STRIP           := $(cross_gcc)strip
 OBJCOPY         := $(cross_gcc)objcopy
 OBJDUMP         := $(cross_gcc)objdump
 
-cppflags_com    += -I$(prefix_path)/include -pipe
+cppflags_com    += -Wno-error=unused-parameter -Wno-unused-parameter -Wno-error=unused-result -Wno-unused-result -Wno-error=unused-variable -Wno-error=unused-function
+cppflags_com    += -I$(prefix_path)/include $(debug_release)
+cppflags_com    += -pipe -W -Wall -Werror=all -ffunction-sections -fdata-sections
 cflags_com      +=
 cxxflags_com    +=
-ldflags_com     += -L$(prefix_path)/lib
+ldflags_com     += -L$(prefix_path)/lib -Wl,--gc-sections -Wl,--as-needed
 libs_com        +=
 
 include_path    := $(prefix_path)/include
