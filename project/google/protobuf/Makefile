@@ -44,7 +44,7 @@ ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
 	cd $(build_path)/$(@:-config=) &&               \
         $(src_path)/$(@:-config=)/configure         \
             CC=$(GCC) CXX=$(CXX)                    \
-            CPPFLAGS="$(cppflags_com)"              \
+            CPPFLAGS="$(cppflags_com) -Wno-error=stringop-overflow=" \
             CFLAGS="$(cflags_com)"                  \
             CXXFLAGS="$(cxxflags_com)"              \
             LDFLAGS="$(ldflags_com)"                \
@@ -61,5 +61,5 @@ ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
 	$(TOUCH) $(config_ok_mark_path)
 endif
 
-.PHONY: all clean distclean list
+.PHONY: demo all clean distclean list
 
