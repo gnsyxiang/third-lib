@@ -41,22 +41,45 @@ ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
 	cd $(src_path)/$(@:-config=) && \
         ./autogen.sh
 
-	cd $(build_path)/$(@:-config=) &&               \
-        $(src_path)/$(@:-config=)/configure         \
-            CC=$(GCC) CXX=$(CXX)                    \
+	case $(host) in                                         \
+        x86*)                                               \
+            cd $(build_path)/$(@:-config=) &&               \
+            $(src_path)/$(@:-config=)/configure             \
+            CC=$(GCC) CXX=$(CXX)                            \
             CPPFLAGS="$(cppflags_com) -Wno-error=stringop-overflow=" \
-            CFLAGS="$(cflags_com)"                  \
-            CXXFLAGS="$(cxxflags_com)"              \
-            LDFLAGS="$(ldflags_com)"                \
-            LIBS="$(libs_com)"                      \
-            PKG_CONFIG_PATH="$(pkg_config_path)"    \
-            --program-suffix=                       \
-            --prefix=$(prefix_path)                 \
-            --build=$(build)                        \
-            --host=$(host)                          \
-            --target=$(host)                        \
-            \
-            --with-zlib
+            CFLAGS="$(cflags_com)"                          \
+            CXXFLAGS="$(cxxflags_com)"                      \
+            LDFLAGS="$(ldflags_com)"                        \
+            LIBS="$(libs_com)"                              \
+            PKG_CONFIG_PATH="$(pkg_config_path)"            \
+            --program-suffix=                               \
+            --prefix=$(prefix_path)                         \
+            --build=$(build)                                \
+            --host=$(host)                                  \
+            --target=$(host)                                \
+                                                            \
+            --with-zlib                                     \
+        ;;                                                  \
+        arm-*|aarch*)                                       \
+            cd $(build_path)/$(@:-config=) &&               \
+            $(src_path)/$(@:-config=)/configure             \
+            CC=$(GCC) CXX=$(CXX)                            \
+            CPPFLAGS="$(cppflags_com)"                      \
+            CFLAGS="$(cflags_com)"                          \
+            CXXFLAGS="$(cxxflags_com)"                      \
+            LDFLAGS="$(ldflags_com)"                        \
+            LIBS="$(libs_com)"                              \
+            PKG_CONFIG_PATH="$(pkg_config_path)"            \
+            --with-protoc=/mnt/nfs/pc/ubuntu/bin/protoc     \
+            --program-suffix=                               \
+            --prefix=$(prefix_path)                         \
+            --build=$(build)                                \
+            --host=$(host)                                  \
+            --target=$(host)                                \
+                                                            \
+            --with-zlib                                     \
+        ;;                                                  \
+    esac
 
 	$(TOUCH) $(config_ok_mark_path)
 endif
