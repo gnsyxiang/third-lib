@@ -78,9 +78,9 @@ STRIP           := $(cross_gcc)strip
 OBJCOPY         := $(cross_gcc)objcopy
 OBJDUMP         := $(cross_gcc)objdump
 
-cppflags_com    += -Wno-error=unused-parameter -Wno-unused-parameter -Wno-error=unused-result -Wno-unused-result -Wno-error=unused-variable -Wno-error=unused-function
 cppflags_com    += -I$(prefix_path)/include $(debug_release)
-cppflags_com    += -pipe -W -Wall -Werror=all -ffunction-sections -fdata-sections
+cppflags_com    += $(cppflags_com) -pipe -W -Wall -Werror=all -ffunction-sections -fdata-sections
+cppflags_com    += $(cppflags_com) -Wno-error=unused-parameter -Wno-unused-parameter -Wno-error=unused-result -Wno-unused-result -Wno-error=unused-variable -Wno-error=unused-function
 cflags_com      +=
 cxxflags_com    +=
 ldflags_com     += -L$(prefix_path)/lib -Wl,--gc-sections -Wl,--as-needed
