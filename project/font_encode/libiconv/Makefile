@@ -41,7 +41,7 @@ ifneq ($(config_ok_mark_path), $(wildcard $(config_ok_mark_path)))
 	cd $(build_path)/$(@:-config=) &&               \
         $(src_path)/$(@:-config=)/configure         \
             CC=$(GCC) CXX=$(CXX)                    \
-            CPPFLAGS="$(cppflags_com)"              \
+            CPPFLAGS="$(cppflags_com) -Wno-error=unused-value" \
             CFLAGS="$(cflags_com)"                  \
             CXXFLAGS="$(cxxflags_com)"              \
             LDFLAGS="$(ldflags_com)"                \
